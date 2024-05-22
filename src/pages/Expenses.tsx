@@ -160,6 +160,7 @@ export default function Expenses() {
                 onClick={() => {
                   setFilterStartDate("");
                   setFilterEndDate("");
+                  setFilterEndDate("");
                 }}
               >
                 Clear Filter
