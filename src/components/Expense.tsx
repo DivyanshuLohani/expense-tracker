@@ -1,10 +1,11 @@
-import React from "react";
 import { Expense as IExpense } from "../interfaces";
 import { formatDate } from "../utils/formatDate";
 import formatToIndianCurrency from "../utils/formatCurrency";
+import { useNavigate } from "react-router-dom";
 
 export default function Expense(props: { expense: IExpense }) {
   const expense = props.expense;
+  const navigate = useNavigate();
 
   const calculateBackgroundColor = (amount: number, maxAmount: number) => {
     const green = [34, 197, 94]; // RGB for green-500
@@ -24,12 +25,18 @@ export default function Expense(props: { expense: IExpense }) {
   return (
     <div
       style={{ backgroundColor }}
-      className="rounded-3xl px-5 py-3 flex-col min-h-[250px]"
+      className="rounded-3xl px-5 py-3 flex-col cursor-pointer"
+      onClick={() =>
+        navigate(`/expense/${expense.id}`, {
+          state: { expense },
+        })
+      }
     >
       <h2 className="text-2xl font-bold">{expense.name}</h2>
+
       <span>{formatDate(expense.date)}</span>
 
-      <div className="text-right relative mt-[110px] text-4xl">
+      <div className="text-right relative mt-[110px] text-2xl  md:text-4xl">
         {formatToIndianCurrency(expense.amount)}
       </div>
     </div>

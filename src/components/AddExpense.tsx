@@ -31,16 +31,20 @@ export default function AddExpense(props: { dispatch: Dispatch<any> }) {
   };
 
   return (
-    <form ref={formRef} className="flex flex-col gap-2" onSubmit={handleSubmit}>
+    <form
+      ref={formRef}
+      className="flex flex-col gap-2 w-full md:w-1/3"
+      onSubmit={handleSubmit}
+    >
       <h1 className="text=center text-3xl">Add Expense</h1>
       <div className="w-full">
-        <label htmlFor="search" className="text-xl sr-only">
+        <label htmlFor="search" className="text-xl ">
           Name
         </label>
         <input
           type="text"
           id="search"
-          className="border-2 shadow-lg p-3 text-lg rounded-full w-full -ml-3"
+          className="border-2 shadow-lg p-3 text-lg rounded-full w-full -ml-3 mt-1"
           placeholder="Name"
           onChange={(e) => setName(e.target.value)}
           value={name}
@@ -49,13 +53,13 @@ export default function AddExpense(props: { dispatch: Dispatch<any> }) {
 
       <div className="flex gap-5">
         <div className="w-full">
-          <label htmlFor="search" className="text-xl sr-only">
+          <label htmlFor="search" className="text-xl ">
             Amount
           </label>
           <input
             type="number"
             id="search"
-            className="border-2 shadow-lg p-3 text-lg rounded-full w-full -ml-3"
+            className="border-2 shadow-lg p-3 text-lg rounded-full w-full -ml-3 mt-1"
             placeholder="Amount"
             onChange={(e) => setAmount(parseFloat(e.target.value))}
             value={amount}

@@ -9,7 +9,7 @@ export const ACTIONS = {
 export default function reducer(state: Expense[], action: any) {
   switch (action.type) {
     case ACTIONS.ADD_EXPENSE:
-      const s = [...state, action.payload];
+      let s = [...state, action.payload];
       localStorage.setItem("expenses", JSON.stringify(s));
       return s;
   }

@@ -29,12 +29,12 @@ export default function Expenses() {
     startTransition(() => {
       let t = 0;
 
-      expenses.forEach((e: IExpense) => {
+      displayed.forEach((e: IExpense) => {
         t += e.amount;
       });
       setTotal(t);
     });
-  }, [expenses]);
+  }, [displayed]);
 
   useEffect(() => {
     const compareExpenses = (a: IExpense, b: IExpense) => {
@@ -89,8 +89,8 @@ export default function Expenses() {
   return (
     <main className="flex p-10 flex-col gap-10 box-border">
       <h1 className=" text-5xl font-bold">Expense Tracker</h1>
-      <div className="grid grid-cols-3 gap-10">
-        <div className="flex flex-col gap-10">
+      <div className="flex flex-col-reverse md:flex-row gap-10">
+        <div className="flex flex-col gap-10 w-full md:w-1/3">
           <div className="w-full">
             <label htmlFor="search" className="text-xl sr-only">
               Search
@@ -146,13 +146,13 @@ export default function Expenses() {
             </div>
           </div>
         </div>
-        <div className="font-bold text-4xl">
+        <div className="font-bold text-4xl w-full md:w-1/3">
           You've Spent{" "}
           <span className="text-5xl">
             {isPending ? "Loading..." : formatToIndianCurrency(total)}
           </span>
           <br />
-          <span>in {expenses.length} transactions</span>
+          <span>in {displayed.length} transactions</span>
           {filterStartDate && filterEndDate && (
             <div>
               <button
