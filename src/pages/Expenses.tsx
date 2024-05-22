@@ -147,7 +147,7 @@ export default function Expenses() {
           </div>
         </div>
         <div className="font-bold text-4xl w-full md:w-1/3">
-          You've Spent{" "}
+          You've Spent <br />
           <span className="text-5xl">
             {isPending ? "Loading..." : formatToIndianCurrency(total)}
           </span>
