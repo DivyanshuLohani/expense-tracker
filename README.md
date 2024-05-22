@@ -1,46 +1,58 @@
-# Getting Started with Create React App
+# Expense Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+Expense Tracker is a web application built with React that allows users to track their expenses. Users can add, edit, and delete expenses, and the application will display the total amount spent. The application also provides sorting and filtering features to help users analyze their spending habits.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Add Expense**: Users can add new expenses with details such as name, amount, date, and description.
+- **Sort Expenses**: Users can sort expenses by date or amount.
+- **Filter Expenses**: Users can filter expenses by a date range.
+- **Total Spent**: The application calculates and displays the total amount spent.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Installation
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. **Clone the repository**:
+    ```sh
+    git clone https://github.com/DivyanshuLohani/expense-tracker.git
+    ```
 
-### `npm test`
+2. **Navigate to the project directory**:
+    ```sh
+    cd expense-tracker
+    ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. **Install dependencies**:
+    ```sh
+    npm install
+    ```
 
-### `npm run build`
+4. **Start the development server**:
+    ```sh
+    npm start
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The application will be available at `http://localhost:3000`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Add a new expense**:
+    - Click on the "Add Expense" button.
+    - Fill in the details (name, amount, date, description) in the form.
+    - Click "Save" to add the expense.
 
-### `npm run eject`
+2. **Sort expenses**:
+    - Use the sort dropdown to select "Date" or "Amount".
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+3. **Filter expenses**:
+    - Use the filter inputs to set a start date and an end date.
+    - The expenses list will update to show only expenses within the specified date range.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Technologies Used
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **React**: JavaScript library for building user interfaces.
+- **useReducer**: React hook for managing complex state logic.
+- **useState**: React hook for managing local component state.
+- **useEffect**: React hook for performing side effects in function components.
+- **useTransition**: React hook for managing UI transitions.
