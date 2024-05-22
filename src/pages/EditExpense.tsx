@@ -1,6 +1,5 @@
-import React, { Dispatch, useReducer, useState } from "react";
+import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import expenseReducer, { ACTIONS } from "../reducers/expense";
 import { Expense as IExpense } from "../interfaces";
 
 export default function EditExpense() {
