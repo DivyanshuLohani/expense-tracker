@@ -39,7 +39,7 @@ export default function Expenses() {
   useEffect(() => {
     const compareExpenses = (a: IExpense, b: IExpense) => {
       if (sortBy === "date") {
-        return new Date(a.date).getTime() - new Date(b.date).getTime();
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
       } else if (sortBy === "amount") {
         return a.amount - b.amount;
       }
@@ -160,7 +160,7 @@ export default function Expenses() {
                 onClick={() => {
                   setFilterStartDate("");
                   setFilterEndDate("");
-                  setFilterEndDate("");
+                  setSearch("");
                 }}
               >
                 Clear Filter
