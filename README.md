@@ -7,6 +7,8 @@ Expense Tracker is a web application built with React that allows users to track
 ## Features
 
 - **Add Expense**: Users can add new expenses with details such as name, amount, date, and description.
+- **Edit Expense**: Users can modify existing expenses.
+- **Delete Expense**: Users can remove expenses.
 - **Sort Expenses**: Users can sort expenses by date or amount.
 - **Filter Expenses**: Users can filter expenses by a date range.
 - **Total Spent**: The application calculates and displays the total amount spent.
@@ -42,10 +44,18 @@ The application will be available at `http://localhost:3000`.
     - Fill in the details (name, amount, date, description) in the form.
     - Click "Save" to add the expense.
 
-2. **Sort expenses**:
+2. **Edit an existing expense**:
+    - Click on the "Edit" button next to the expense you want to modify.
+    - Update the details in the form.
+    - Click "Save" to save the changes.
+
+3. **Delete an expense**:
+    - Click on the "Delete" button next to the expense you want to remove.
+
+4. **Sort expenses**:
     - Use the sort dropdown to select "Date" or "Amount".
 
-3. **Filter expenses**:
+5. **Filter expenses**:
     - Use the filter inputs to set a start date and an end date.
     - The expenses list will update to show only expenses within the specified date range.
 
