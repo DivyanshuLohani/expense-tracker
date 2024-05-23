@@ -19,7 +19,7 @@ export default function Expense(props: { expense: IExpense }) {
     return `rgb(${color.join(",")})`;
   };
 
-  const maxAmount = 1000; // Define the maximum amount to normalize the ratio
+  const maxAmount = 10000;
   const backgroundColor = calculateBackgroundColor(expense.amount, maxAmount);
 
   return (
