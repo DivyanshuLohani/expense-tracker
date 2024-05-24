@@ -10,6 +10,7 @@ import expenseReducer from "../reducers/expense";
 import { Expense as IExpense } from "../interfaces";
 import formatToIndianCurrency from "../utils/formatCurrency";
 import AddExpense from "../components/AddExpense";
+import ExportExpenses from "../components/ExportExpenses";
 
 export default function Expenses() {
   const defaultState = JSON.parse(localStorage.getItem("expenses") ?? "[]");
@@ -153,7 +154,15 @@ export default function Expenses() {
           </span>
           <br />
           <span>in {displayed.length} transactions</span>
-          {filterStartDate && filterEndDate && (
+          {expenses && (
+            <ExportExpenses
+              expenses={displayed}
+              start={filterStartDate}
+              end={filterEndDate}
+              search={search}
+            />
+          )}
+          {((filterStartDate && filterEndDate) || search) && (
             <div>
               <button
                 className="border-2 border-red-500 shadow-lg p-3 text-lg rounded-full w-full hover:bg-red-500 hover:text-white mt-4 transition-colors duration-150"
