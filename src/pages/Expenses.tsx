@@ -1,5 +1,6 @@
 import React, {
   Dispatch,
+  Suspense,
   useEffect,
   useReducer,
   useState,
@@ -38,44 +39,44 @@ export default function Expenses() {
   }, [displayed]);
 
   useEffect(() => {
-    const compareExpenses = (a: IExpense, b: IExpense) => {
-      if (sortBy === "date") {
-        return new Date(b.date).getTime() - new Date(a.date).getTime();
-      } else if (sortBy === "amount") {
-        return a.amount - b.amount;
-      }
-      return 0;
-    };
-
-    const compareDate = (v: IExpense) => {
-      const startDate = new Date(filterStartDate);
-      const endDate = new Date(filterEndDate);
-
-      if (startDate > endDate) {
-        return false;
-      }
-
-      const expenseDate = new Date(v.date);
-
-      return (
-        expenseDate.getTime() >= startDate.getTime() &&
-        expenseDate.getTime() <= endDate.getTime()
-      );
-    };
-
-    let sortedExpenses = [...expenses].sort(compareExpenses);
-
-    if (filterStartDate && filterEndDate) {
-      sortedExpenses = sortedExpenses.filter(compareDate);
-    }
-
-    if (search) {
-      sortedExpenses = sortedExpenses.filter((v) =>
-        v.name.toLowerCase().includes(search.toLowerCase())
-      );
-    }
-
     startTransition(() => {
+      const compareExpenses = (a: IExpense, b: IExpense) => {
+        if (sortBy === "date") {
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
+        } else if (sortBy === "amount") {
+          return a.amount - b.amount;
+        }
+        return 0;
+      };
+
+      const compareDate = (v: IExpense) => {
+        const startDate = new Date(filterStartDate);
+        const endDate = new Date(filterEndDate);
+
+        if (startDate > endDate) {
+          return false;
+        }
+
+        const expenseDate = new Date(v.date);
+
+        return (
+          expenseDate.getTime() >= startDate.getTime() &&
+          expenseDate.getTime() <= endDate.getTime()
+        );
+      };
+
+      let sortedExpenses = [...expenses].sort(compareExpenses);
+
+      if (filterStartDate && filterEndDate) {
+        sortedExpenses = sortedExpenses.filter(compareDate);
+      }
+
+      if (search) {
+        sortedExpenses = sortedExpenses.filter((v) =>
+          v.name.toLowerCase().includes(search.toLowerCase())
+        );
+      }
+
       setDisplayed(sortedExpenses);
     });
   }, [
@@ -154,14 +155,14 @@ export default function Expenses() {
           </span>
           <br />
           <span>in {displayed.length} transactions</span>
-          {expenses && (
+          <Suspense fallback={<div>Loading...</div>}>
             <ExportExpenses
               expenses={displayed}
               start={filterStartDate}
               end={filterEndDate}
               search={search}
             />
-          )}
+          </Suspense>
           {((filterStartDate && filterEndDate) || search) && (
             <div>
               <button

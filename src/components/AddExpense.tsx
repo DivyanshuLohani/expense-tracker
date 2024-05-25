@@ -3,7 +3,7 @@ import { ACTIONS } from "../reducers/expense";
 
 export default function AddExpense(props: { dispatch: Dispatch<any> }) {
   const [name, setName] = useState<string>("");
-  //   const [description, setDiscription] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
   const [amount, setAmount] = useState<number>();
   const [date, setDate] = useState<string>(
     new Date().toISOString().split("T")[0]
@@ -20,7 +20,7 @@ export default function AddExpense(props: { dispatch: Dispatch<any> }) {
       payload: {
         name,
         id: Date.now().toString(),
-        description: null,
+        description: description,
         amount,
         date: new Date(date),
       },
@@ -38,7 +38,7 @@ export default function AddExpense(props: { dispatch: Dispatch<any> }) {
     >
       <h1 className="text=center text-3xl">Add Expense</h1>
       <div className="w-full">
-        <label htmlFor="search" className="text-xl ">
+        <label htmlFor="search" className="text-xl sr-only">
           Name
         </label>
         <input
@@ -53,7 +53,7 @@ export default function AddExpense(props: { dispatch: Dispatch<any> }) {
 
       <div className="flex gap-5">
         <div className="w-full">
-          <label htmlFor="search" className="text-xl ">
+          <label htmlFor="search" className="text-xl sr-only">
             Amount
           </label>
           <input
@@ -68,7 +68,7 @@ export default function AddExpense(props: { dispatch: Dispatch<any> }) {
       </div>
       <div className="flex gap-5 flex-row">
         <div className="w-full">
-          <label htmlFor="search" className="text-lg">
+          <label htmlFor="search" className="text-lg sr-only">
             Expense Date
           </label>
           <input
@@ -79,6 +79,18 @@ export default function AddExpense(props: { dispatch: Dispatch<any> }) {
           />
         </div>
       </div>
+      <div className="w-full">
+        <label htmlFor="search" className="text-xl  sr-only">
+          Description (Optional)
+        </label>
+        <textarea
+          className="border-2 shadow-lg p-3 text-lg rounded-xl w-full -ml-3 mt-1"
+          placeholder="Description (Optional)"
+          onChange={(e) => setDescription(e.target.value)}
+          value={description}
+        />
+      </div>
+
       <div className="flex gap-5 flex-row mt-3">
         <div className="w-full">
           <button className="border-2 border-green-500 shadow-lg p-3 text-lg rounded-full w-full hover:bg-green-500 hover:text-white mt-4 transition-colors duration-150 -ml-3">

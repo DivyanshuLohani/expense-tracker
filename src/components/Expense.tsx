@@ -16,7 +16,7 @@ export default function Expense(props: { expense: IExpense }) {
       Math.round(start + ratio * (red[i] - start))
     );
 
-    return `rgb(${color.join(",")})`;
+    return `rgb(${color.join(",")}, 0.5)`;
   };
 
   const maxAmount = 10000;
@@ -24,19 +24,19 @@ export default function Expense(props: { expense: IExpense }) {
 
   return (
     <div
+      className={`relative shadow-md rounded-lg p-4 min-h-56 transition-transform transform  z-10 hover:-translate-y-2 hover:shadow-lg cursor-pointer`}
       style={{ backgroundColor }}
-      className="rounded-3xl px-5 py-3 flex-col cursor-pointer"
       onClick={() =>
         navigate(`/expense/${expense.id}`, {
           state: { expense },
         })
       }
     >
-      <h2 className="text-2xl font-bold">{expense.name}</h2>
-
-      <span>{formatDate(expense.date)}</span>
-
-      <div className="text-right relative mt-[110px] text-2xl  md:text-4xl">
+      {/* <div className="absolute h-56 w-full -z-10 bg-black top-0 left-0 rounded-lg bg-opacity-10 hover:rotate-6 transition-transform duration-300"></div> */}
+      <div className="text-xl font-bold mb-2">{expense.name}</div>
+      <div className="mb-4">{formatDate(expense.date)}</div>
+      <div className="mb-8">{expense.description}</div>
+      <div className="absolute bottom-4 right-4 text-2xl">
         {formatToIndianCurrency(expense.amount)}
       </div>
     </div>
