@@ -1,5 +1,5 @@
-var CACHE_NAME = "pwa-task-manager";
-var urlsToCache = ["/", "/completed"];
+var CACHE_NAME = "pwa-task-manager-v1";
+var urlsToCache = ["/", "/completed", "/bundle.js", "/styles.css"]; // Add your bundle and other necessary assets here
 
 // Install a service worker
 self.addEventListener("install", (event) => {
@@ -12,7 +12,7 @@ self.addEventListener("install", (event) => {
   );
 });
 
-// Cache and return requests
+// Serve cached assets from the service worker
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then(function (response) {
@@ -20,14 +20,15 @@ self.addEventListener("fetch", (event) => {
       if (response) {
         return response;
       }
+      // If the requested asset is not found in the cache, fetch it from the network
       return fetch(event.request);
     })
   );
 });
 
-// Update a service worker
+// Update the service worker
 self.addEventListener("activate", (event) => {
-  var cacheWhitelist = ["pwa-task-manager"];
+  var cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
