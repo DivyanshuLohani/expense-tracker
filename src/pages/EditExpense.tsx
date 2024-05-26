@@ -10,7 +10,7 @@ export default function EditExpense() {
     navigate("/");
   }
   const [name, setName] = useState<string>(expense.name);
-  //   const [description, setDiscription] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
   const [amount, setAmount] = useState<number>(expense.amount);
   const [date, setDate] = useState<string>(
     new Date(expense.date).toISOString().split("T")[0]
@@ -27,6 +27,7 @@ export default function EditExpense() {
             name,
             amount,
             date,
+            description,
           }
         : e
     );
@@ -43,7 +44,7 @@ export default function EditExpense() {
   };
 
   return (
-    <div className="flex flex-col gap-2 w-full px-40 justify-center h-svh">
+    <div className="flex flex-col gap-2 w-full px-5 md:px-40 justify-center h-svh">
       <h1 className="text=center text-3xl">Edit Expense</h1>
       <div className="w-full">
         <label htmlFor="search" className="text-xl ">
@@ -86,6 +87,17 @@ export default function EditExpense() {
             value={date}
           />
         </div>
+      </div>
+      <div className="w-full">
+        <label htmlFor="search" className="text-xl  sr-only">
+          Description (Optional)
+        </label>
+        <textarea
+          className="border-2 shadow-lg p-3 text-lg rounded-xl w-full -ml-3 mt-1"
+          placeholder="Description (Optional)"
+          onChange={(e) => setDescription(e.target.value)}
+          value={description}
+        />
       </div>
       <div className="flex gap-5 flex-row mt-3">
         <button
